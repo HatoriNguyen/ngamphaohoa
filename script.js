@@ -157,7 +157,7 @@ function showNextMessage() {
 }
 
 btnYes.addEventListener("click", () => {
-  window.location.href = "firework.html";
+  window.location.href = "start.html";
 });
 
 btnNo.addEventListener("click", () => {
