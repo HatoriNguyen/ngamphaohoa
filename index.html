@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pháo hoa</title>
     <style>
+        /* Toàn bộ CSS như đã cung cấp */
         body,
         html {
             height: 100%;
@@ -20,9 +21,11 @@
             text-align: center;
             position: relative;
         }
+
         #c {
             background-color: #ffffff;
         }
+
         canvas {
             position: absolute;
             top: 0;
@@ -167,6 +170,12 @@
 </head>
 
 <body>
+    <!-- Thêm nhạc nền -->
+    <audio id="background-audio" autoplay loop>
+        <source src="xuanthi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <canvas id="c" width="948" height="586"></canvas>
     <div>
         <h1 id="messageTitle">Bạn có tin nhắn mới</h1>
@@ -191,7 +200,6 @@
         </div>
     </div>
     <script src="./script.js"></script>
-
 </body>
 
 </html>
