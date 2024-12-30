@@ -128,11 +128,21 @@ const messageText = document.getElementById('messageText');
 let currentMessage = 0;
 
 btn.addEventListener('click', () => {
+    // Phát nhạc nền
+    const audio = document.getElementById('background-audio');
+    if (audio.paused) {
+        audio.play();
+    }
+
+    // Ẩn tiêu đề và nút
     messageTitle.classList.add('hide');
     messageText.classList.add('hide');
     btn.classList.add('hide');
+
+    // Hiển thị tin nhắn lần lượt
     showNextMessage();
 });
+
 
 function showNextMessage() {
     if (currentMessage < messages.length) {
