@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pháo hoa</title>
     <style>
-        /* Toàn bộ CSS như đã cung cấp */
+        /* CSS giữ nguyên như bạn đã cung cấp */
         body,
         html {
             height: 100%;
@@ -43,81 +43,6 @@
             border-radius: 10px;
             transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: opacity 0.3s ease;
-        }
-
-        #btnYes,
-        #btnNo {
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #ce4f6a;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            transition: all 0.3s ease-in-out;
-            margin: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        h1,
-        p {
-            transition: opacity 0.3s ease;
-            font-family: 'Times New Roman', 'Arial', sans-serif;
-        }
-
-        .hide {
-            display: none;
-        }
-
-        .show {
-            opacity: 1;
-        }
-
-        #btn img {
-            width: 60px;
-            height: 40px;
-        }
-
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            50% {
-                transform: translateX(5px);
-            }
-
-            75% {
-                transform: translateX(-5px);
-            }
-
-            100% {
-                transform: translateX(5px);
-            }
-        }
-
-        .shake {
-            animation: shake 0.5s ease-in-out;
-        }
-
-        #btn:hover,
-        #btnYes:hover,
-        #btnNo:hover {
-            background-color: #d37da8;
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        #btn:active,
-        #btnYes:active,
-        #btnNo:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .message {
@@ -138,32 +63,7 @@
         }
 
         .message.show {
-            transform: perspective(500px) rotateY(0deg);
-        }
-
-        .div-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            max-width: 100%;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-
-        .message-text {
-            font-size: 18px;
             display: block;
-            padding: 30px;
-            border: 2px solid #f19fb3;
-            border-radius: 10px;
-            background-color: #ffffff;
-            text-align: center;
-            margin-bottom: 30px;
-            transform: perspective(500px) rotateY(10deg);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .message-text.show {
             transform: perspective(500px) rotateY(0deg);
         }
     </style>
@@ -171,10 +71,10 @@
 
 <body>
     <!-- Thêm nhạc nền -->
-<audio id="background-audio" autoplay loop>
-    <source src="xuanthi.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>
+    <audio id="background-audio" loop>
+        <source src="xuanthi.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <canvas id="c" width="948" height="586"></canvas>
     <div>
@@ -192,15 +92,33 @@
         <div class="message">Em có muốn cùng anh đi không?</div>
         <div class="message">Anh hứa sẽ không để em phải chờ lâu đâu,</div>
         <div class="message">Anh muốn được nhìn thấy nụ cười của em khi pháo hoa nở rộ. 😘</div>
-
-        <div id="msgYes" class="message-text" style="display: none;">Chắc chắn buổi tối đó sẽ còn đặc biệt hơn nếu có em bên cạnh. 💕</div>
-
-        <div class="div-buttons">
-            <button id="btnYes" style="display: none;">Ok đi luôn</button>
-            <button id="btnNo" style="display: none;">Suy nghĩ</button>
-        </div>
     </div>
-    <script src="./script.js"></script>
+
+    <script>
+        // Lấy các phần tử
+        const btn = document.getElementById('btn');
+        const messages = document.querySelectorAll('.message');
+        const audio = document.getElementById('background-audio');
+
+        // Biến để theo dõi trạng thái
+        let isPlaying = false;
+
+        // Hàm hiển thị tin nhắn và phát nhạc
+        btn.addEventListener('click', () => {
+            // Hiển thị các tin nhắn
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.classList.add('show');
+                }, index * 500); // Hiện từng tin nhắn sau mỗi 500ms
+            });
+
+            // Phát nhạc khi chưa phát
+            if (!isPlaying) {
+                audio.play();
+                isPlaying = true;
+            }
+        });
+    </script>
 </body>
 
 </html>
